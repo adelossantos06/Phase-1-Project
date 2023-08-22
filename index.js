@@ -3,7 +3,9 @@
 const countries = document.querySelector("#countires")
 const form = document.querySelector("#submitBtn")
 const infoContainer = document.querySelector("#cards-contianer")
-const list = document.querySelector("#container")
+const container = document.querySelector(".container")
+
+
 
 function fetchData() {
     fetch("https://restcountries.com/v3.1/all")
@@ -11,26 +13,54 @@ function fetchData() {
         .then(data => {
             console.log("data", data)
             const countryObj = Object.values(data)
-            renderAllCountries(countryObj)
+            countryCard(countryObj)
 
         })
 }
 
 fetchData()
 
-function renderAllCountries(countries) {
-    console.log('countries', countries)
-    countries.forEach(renderOneCountry)
+// function renderAllCountries(countries) {
+//     console.log('countries', countries)
+//     countries.forEach(renderOneCountry)
+// }
+
+
+
+// function renderOneCountry(singleCountry) {
+//     console.log('singleCountry', singleCountry)
+//     const countryNameLi = document.createElement('li')
+//     const countryPopulation = document.createElement('li')
+//     countryNameLi.textContent = singleCountry.name.common
+//     countryPopulation.textContent = singleCountry.population
+//     list.append(countryNameLi, countryPopulation)
+// }
+
+function countryCard(countryInfo) {
+    countryInfo.forEach(country => {
+        const div = container.appendChild(document.createElement('div'))
+        const image = document.createElement('img')
+        const name = document.createElement('h2')
+        const population = document.createElement('li')
+        const continents = document.createElement('li')
+        const capital = document.createElement('li')
+
+        div.classList = 'card'
+        image.classList = 'card-img'
+
+
+        image.src = country.flags.png
+        image.alt = country.flags.alt
+        name.innerText = `${country.name.common}`
+        population.innerText = `Population: ${country.population}`
+        continents.innerText = `Continent: ${country.continents}`
+        capital.innerText = `Capital: ${country.capital}`
+
+        div.append(name, image, population, continents, capital)
+    })
+
 }
 
-
-
-function renderOneCountry(singleCountry) {
-    console.log('singleCountry', singleCountry)
-    const countryName = document.createElement('li')
-    countryName.textContent = singleCountry.name.common
-    list.append(countryName)
-}
 
 
 
