@@ -9,24 +9,23 @@
 </head>
 
 <header>
-    <h1>Guess The Country!</h1>
+    <h1>Country Database</h1>
 </header>
 
 <body>
     <div>
-        <img src="https://flagcdn.com/w320/vc.png" alt="">
-    </div>
-
-    <div>
         <form method="post" action="">
-            <input type="text" class="search" placeholder="Country's Flag Name">
+            <input id="search" type="text" class="search" placeholder="Country's Name">
+            <input id="submitBtn" type="submit" name="submit">
+            <script defer src="index.js"></script>
         </form>
     </div>
 
+
     <div>
-        <p id="result">This is where the correct answer will be</p>
+        <ul id="container"></ul>
     </div>
-    <script src="index.js"></script>
+
 </body>
 
 </html>
