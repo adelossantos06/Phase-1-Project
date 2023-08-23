@@ -1,12 +1,62 @@
+body {
+    overflow-x: hidden;
+}
+
 h1 {
-    color: white;
+    color: black;
+    text-align: center;
 }
 
 p {
     color: white;
 }
 
+li {
+    list-style-type: none;
+}
+
+#search-submit {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+
+
 
 /* body {
     background-image: url("IMAGES/World_Map.jpeg")
 } */
+
+.outer {
+    display: flex;
+    width: 100%;
+    border: 2px solid green;
+    overflow: hidden;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+
+    background-color: blue;
+    padding: 30px;
+    border: 1px solid black;
+    margin: 10px;
+
+}
+
+.card h2 {
+    text-align: center;
+
+}
+
+.info-list {
+    text-align: center;
+    padding-top: 20px;
+}

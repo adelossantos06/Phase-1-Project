@@ -39,6 +39,8 @@ fetchData()
 function countryCard(countryInfo) {
     countryInfo.forEach(country => {
         const div = container.appendChild(document.createElement('div'))
+        const divForNameImg = div.appendChild(document.createElement("div"))
+        const divForLi = div.appendChild(document.createElement('div'))
         const image = document.createElement('img')
         const name = document.createElement('h2')
         const population = document.createElement('li')
@@ -47,7 +49,7 @@ function countryCard(countryInfo) {
 
         div.classList = 'card'
         image.classList = 'card-img'
-
+        divForLi.classList = 'info-list'
 
         image.src = country.flags.png
         image.alt = country.flags.alt
@@ -56,7 +58,16 @@ function countryCard(countryInfo) {
         continents.innerText = `Continent: ${country.continents}`
         capital.innerText = `Capital: ${country.capital}`
 
-        div.append(name, image, population, continents, capital)
+        divForNameImg.append(name, image)
+        divForLi.append(population, continents, capital)
+    })
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const searchData = new FormData(form)
+        const textBox = document.querySelector('#search')
+
+        fetchData(textBox.value)
     })
 
 }
@@ -64,22 +75,9 @@ function countryCard(countryInfo) {
 
 
 
-// function renderCountry(singleCountry) {
 
-// }
 
-// function oneCountry(oneCountryData) {
-//     const countryLi = document.createElement('li')
 
-// }
-
-// form.addEventListener("submit", function (e) {
-//     e.preventDefault();
-//     const searchData = new FormData(form)
-//     const textBox = document.querySelector('#search')
-
-//     fetchData(textBox.value)
-// })
 
 // function countryCard(countryInfo) {
 //     countryInfo.forEach(country => {
