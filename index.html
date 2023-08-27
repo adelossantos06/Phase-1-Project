@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Country Flags</title>
+    <script defer src="index.js"></script>
+    <title>Country Database</title>
 </head>
 
 <header>
@@ -13,28 +14,17 @@
 </header>
 
 <body>
-    <div id="search-submit">
-        <form method="post" action="">
-            <input id="searchBar" type="text" class="search" placeholder="Country's Name">
-            <button id="submitBtn" type="submit" name="submit">submit</button>
-            <script defer src="index.js"></script>
+    <div>
+        <form id="search-submit" method="post" action="">
+            <input id="searchBar" type="text" placeholder="Country's Name">
+            <button id="submitBtn" type="submit" name="submit">Submit</button>
         </form>
     </div>
 
 
     <div class="outer">
         <div class="container">
-            <template id="card-template">
-                <div>
-                    <h2></h2>
-                    <img src="" alt="">
-                </div>
-                <div>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </div>
-            </template>
+
         </div>
     </div>
 
