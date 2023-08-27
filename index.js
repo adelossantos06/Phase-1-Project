@@ -1,36 +1,53 @@
 const container = document.querySelector(".container")
-const outerCountryDiv = document.querySelector(".outer")
 const form = document.querySelector('#search-submit')
 const searchBar = document.querySelector('#searchBar')
+const submitBtn = document.querySelector("#submitBtn")
+const searchTerm = []
+let countries;
 
-//let countries
-
-function fetchData() {
+function fetchDataAndSubmit() {
     form.addEventListener("submit", (e) => {
         e.preventDefault()
         console.log('submitted')
+        container.innerHTML = '';
 
-        //const renderdFilterdCountries = renderCountries(filteredData)
-        // fetchData(renderdFilterdCountries)
+
 
         fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,capital,continents")
             .then(res => res.json())
             .then(data => {
-                // console.log('data', data)
+
                 countries = data
-                // renderCountries(data)
-                const filteredData = countries.filter(country => country.name.common.includes(searchBar.value))
+
+                const searchTerm = searchBar.value
+                const splitSearchTerm = searchTerm.split(" ");
+
+                for (let i = 0; i < splitSearchTerm.length; i++) {
+                    splitSearchTerm[i] = splitSearchTerm[i][0].toUpperCase() + splitSearchTerm[i].substr(1).toLowerCase()
+                }
+
+                const newSearchTerm = splitSearchTerm.join(" ");
+                console.log('newSearch', newSearchTerm)
+                console.log(searchTerm)
+                console.log(splitSearchTerm)
+                const filteredData = countries.filter(country => country.name.common.includes(newSearchTerm))
                 console.log(filteredData)
 
-                //outerCountryDiv.innerHTML = '';
+
+
+
+
 
                 renderCountries(filteredData)
             })
+            .catch(err => ('Request Failed', err));
     })
+
 }
 
-//         .catch(err => ('Request Failed', err));
-// }
+
+
+
 
 
 function renderCountries(countries) {
@@ -67,44 +84,6 @@ function renderCountries(countries) {
     })
 }
 
-// function handleFilterSubmit(e) {
-//     e.preventDefault()
-// const filterCriteria = e.target.value
-// // fetchData()
-// //     .then(data => {
-// //         console.log('data', data)
-// const filteredData = data.filter(country => country.name.common.includes(filterCriteria))
 
-//         console.log('filterd', filteredData)
-//renderCountries(filteredData)
-//     })
+fetchDataAndSubmit()
 
-// }
-
-
-
-//form.addEventListener("submit", handleFilterSubmit)
-
-
-
-
-//form.addEventListener("submit", handleFilterSubmit)
-
-// form.addEventListener("submit", (e) => {
-//     e.preventDefault()
-//     console.log('submitted')
-//     const filteredData = countries.filter(country => country.name.common.includes(searchBar.value))
-//     console.log(filteredData)
-//     const renderdFilterdCountries = renderCountries(filteredData)
-//     fetchData(renderdFilterdCountries)
-// })
-
-// function handleFilterSubmit(e) {
-//     e.preventDefault()
-//     const filteredData = countries.filter(country => country.name.common.includes(searchBar.value))
-//     console.log(filteredData)
-//     fetchData(filteredData)
-// }
-fetchData()
-
-//handleFilterSubmit()
