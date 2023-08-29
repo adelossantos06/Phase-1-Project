@@ -1,14 +1,14 @@
 const container = document.querySelector(".container")
 const form = document.querySelector('#search-submit')
 const searchBar = document.querySelector('#searchBar')
-const submitBtn = document.querySelector("#submitBtn")
-//const saveButton = document.querySelector('#btnTemplate').content.cloneNod(true).children[0]
+//const submitBtn = document.querySelector("#submitBtn")
 const grabSaveButton = document.querySelector('.button')
+const divForSavedCards = document.querySelector('.savedShell')
 const searchTerm = []
 let countries;
 
 function fetchDataAndSubmit() {
-    form.addEventListener("submit", (e) => {
+    const searchesCountry = form.addEventListener("submit", (e) => {
         e.preventDefault()
         container.innerHTML = '';
 
@@ -34,17 +34,15 @@ function fetchDataAndSubmit() {
                 const filteredData = countries.filter(country => country.name.common.includes(newSearchTerm))
                 console.log(filteredData)
 
-
-
-
-
-
                 renderCountries(filteredData)
+
+
             })
             .catch(err => ('Request Failed', err));
     })
 
 }
+
 
 
 
@@ -66,12 +64,6 @@ function renderCountries(countries) {
         const saveButton = document.createElement('button')
 
 
-
-
-
-
-
-
         div.classList = 'card'
         image.classList = 'card-img'
         divForLi.classList = 'info-list'
@@ -87,37 +79,16 @@ function renderCountries(countries) {
         saveButton.innerText = `Save`
 
 
-
-
         divForNameImg.append(name, image)
         divForLi.append(population, continents, capital)
         div.append(saveButton)
 
         const grabSaveButton = document.querySelector('.button')
-        const divForSavedCards = document.querySelector('.savedShell')
 
         grabSaveButton.addEventListener("click", (e) => {
             e.preventDefault()
             console.log("hi")
-
-            // const addHeader = document.createElement('header')
-            // const divForHeader = document.createElement('div')
-
-            // divForHeader.classList = 'saved-header'
-
-            // addHeader.innerText = 'Saved Countries'
-
-            // divForSavedCards.appendChild(divForHeader)
-            // divForHeader.append(addHeader)
-
-            // const divForSavedCards = document.querySelector('.savedShell')
-
-            let clonedCard = document.querySelector(".card").cloneNode(true)
-            divForSavedCards.appendChild(clonedCard)
-
-            // const saveInsideClone = document.querySelector('.button')
-
-            // saveInsideClone.remove()
+            cloneElement()
 
         })
 
@@ -128,10 +99,30 @@ function renderCountries(countries) {
 
 
 
-// saveButton.addEventListener("click", (e) => {
-//     e.preventDefault()
-//     console.log("hi")
-// })
+
+function cloneElement() {
+    const originalCard = document.querySelector('.card')
+
+    let cloneCard = originalCard.cloneNode(true)
+    let saveBtn = cloneCard.querySelector('.button')
+    saveBtn.remove();
+
+    divForSavedCards.appendChild(cloneCard)
+
+
+    let removeBtn = document.createElement('button')
+    removeBtn.textContent = 'Remove'
+    removeBtn.onClick = function () {
+        removeCountry(cloneCard)
+    }
+
+    cloneCard.append(removeBtn)
+
+
+    const removesCard = removeBtn.addEventListener('click', (e) => {
+        cloneCard.remove()
+    })
+}
 
 
 fetchDataAndSubmit()
