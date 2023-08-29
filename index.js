@@ -1,7 +1,6 @@
 const container = document.querySelector(".container")
 const form = document.querySelector('#search-submit')
 const searchBar = document.querySelector('#searchBar')
-//const submitBtn = document.querySelector("#submitBtn")
 const grabSaveButton = document.querySelector('.button')
 const divForSavedCards = document.querySelector('.savedShell')
 const searchTerm = []
@@ -28,11 +27,7 @@ function fetchDataAndSubmit() {
                 }
 
                 const newSearchTerm = splitSearchTerm.join(" ");
-                console.log('newSearch', newSearchTerm)
-                console.log(searchTerm)
-                console.log(splitSearchTerm)
                 const filteredData = countries.filter(country => country.name.common.includes(newSearchTerm))
-                console.log(filteredData)
 
                 renderCountries(filteredData)
 
@@ -87,7 +82,6 @@ function renderCountries(countries) {
 
         grabSaveButton.addEventListener("click", (e) => {
             e.preventDefault()
-            console.log("hi")
             cloneElement()
 
         })
@@ -123,6 +117,8 @@ function cloneElement() {
         cloneCard.remove()
     })
 }
+
+
 
 
 fetchDataAndSubmit()
