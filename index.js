@@ -1,13 +1,12 @@
 const container = document.querySelector(".container")
 const form = document.querySelector('#search-submit')
 const searchBar = document.querySelector('#searchBar')
-const grabSaveButton = document.querySelector('.button')
 const divForSavedCards = document.querySelector('.savedShell')
 const searchTerm = []
 let countries;
 
 function fetchDataAndSubmit() {
-    const searchesCountry = form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", (e) => {
         e.preventDefault()
         container.innerHTML = '';
 
@@ -29,6 +28,7 @@ function fetchDataAndSubmit() {
                 const newSearchTerm = splitSearchTerm.join(" ");
                 const filteredData = countries.filter(country => country.name.common.includes(newSearchTerm))
 
+
                 renderCountries(filteredData)
 
 
@@ -40,15 +40,11 @@ function fetchDataAndSubmit() {
 
 
 
-
-
-
-
 function renderCountries(countries) {
 
 
     countries.forEach(country => {
-        const div = container.appendChild(document.createElement('div'))
+        const div = document.createElement('div')
         const image = document.createElement('img')
         const divForNameImg = div.appendChild(document.createElement('div'))
         const divForLi = div.appendChild(document.createElement('div'))
@@ -73,18 +69,18 @@ function renderCountries(countries) {
         capital.innerText = `Capital: ${country.capital[0]}`
         saveButton.innerText = `Save`
 
-
+        container.append(div)
         divForNameImg.append(name, image)
         divForLi.append(population, continents, capital)
         div.append(saveButton)
 
-        const grabSaveButton = document.querySelector('.button')
 
-        grabSaveButton.addEventListener("click", (e) => {
-            e.preventDefault()
-            cloneElement()
+
+        saveButton.addEventListener("click", () => {
+            cloneElement(div)
 
         })
+
 
     })
 
@@ -94,8 +90,10 @@ function renderCountries(countries) {
 
 
 
-function cloneElement() {
-    const originalCard = document.querySelector('.card')
+
+
+function cloneElement(originalCard) {
+
 
     let cloneCard = originalCard.cloneNode(true)
     let saveBtn = cloneCard.querySelector('.button')
@@ -113,10 +111,13 @@ function cloneElement() {
     cloneCard.append(removeBtn)
 
 
-    const removesCard = removeBtn.addEventListener('click', (e) => {
+
+
+    removeBtn.addEventListener('click', () => {
         cloneCard.remove()
     })
 }
+
 
 
 
