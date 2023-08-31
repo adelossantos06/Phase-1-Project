@@ -126,6 +126,17 @@ function cloneElement(originalCard) {
         cloneCard.remove()
     })
 
+    cloneCard.addEventListener("mouseover", mouseOver)
+    cloneCard.addEventListener("mouseleave", mouseLeave)
+
+
+    function mouseOver() {
+        cloneCard.style.background = "red";
+    }
+
+    function mouseLeave() {
+        cloneCard.style.background = "LightGray"
+    }
 
 
 }
