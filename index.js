@@ -79,10 +79,16 @@ function renderCountries(countries) {
 
         })
 
-        div.addEventListener("mouseover", mouseOver);
+        div.addEventListener("mouseover", mouseOver)
+        div.addEventListener("mouseleave", mouseLeave)
+
 
         function mouseOver() {
             div.style.background = "red";
+        }
+
+        function mouseLeave() {
+            div.style.background = "LightGray"
         }
 
     })
