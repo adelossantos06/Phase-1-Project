@@ -38,8 +38,6 @@ function fetchDataAndSubmit() {
 
 }
 
-
-
 function renderCountries(countries) {
 
 
@@ -81,6 +79,11 @@ function renderCountries(countries) {
 
         })
 
+        div.addEventListener("mouseover", mouseOver);
+
+        function mouseOver() {
+            div.style.background = "red";
+        }
 
     })
 
@@ -116,7 +119,11 @@ function cloneElement(originalCard) {
     removeBtn.addEventListener('click', () => {
         cloneCard.remove()
     })
+
+
+
 }
+
 
 
 
