@@ -7,9 +7,9 @@ The flags and name keys contain nested objects. The flags key has a value that r
 
 The capital key returns a value of an array with most results having an index of 0, in some cases when a country or teritory has more than one capital this application only returns the capital array at the 0 index. The continents key also returns an array but because an instance of a country spanning multiple contintents is rare this application returns all the data within the array. 
 
-Users of this web application can use the search box to search for a country or territory. The search will return either a single card or multiple information cards containting the name, a flag image, and a list of information including the population, the continent and the capital of the country. 
+Users of this web application can use the search box to search for a country or territory. The search will return either a single card or multiple information cards containing the name, a flag image, and a list of information including the population, the continent and the capital of the country. 
 
-When the user hovers the mouse cursor over the information cards the cards will highlight red. Each card that apppears in the search results contains a save button that will append it to the saved contianer. 
+When the user hovers the mouse cursor over the information cards the cards will highlight red. Each card that apppears in the search results contains a save button that will append it to the saved container. 
 
 If the user wants to remove a saved card, they can do so by using the remove button at the bottom of the card.
 
