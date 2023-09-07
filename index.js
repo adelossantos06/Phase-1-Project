@@ -3,7 +3,7 @@ const form = document.querySelector('#search-submit')
 const searchBar = document.querySelector('#searchBar')
 const divForSavedCards = document.querySelector('.savedShell')
 const searchTerm = []
-let countries;
+
 
 function fetchDataAndSubmit() {
     form.addEventListener("submit", (e) => {

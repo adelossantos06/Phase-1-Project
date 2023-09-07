@@ -44,17 +44,15 @@ body {
 }
 
 .card {
-
     background-color: rgb(211, 211, 211);
     padding: 30px;
     border: 1px solid black;
     margin: 10px;
-
 }
+
 
 .card h2 {
     text-align: center;
-
 }
 
 .info-list {
@@ -75,8 +73,4 @@ button {
     overflow: hidden;
     flex-wrap: wrap;
     margin-top: 100px;
-}
-
-#hidden {
-    visibility: hidden;
 }
