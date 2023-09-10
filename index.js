@@ -2,7 +2,6 @@ const container = document.querySelector(".container")
 const form = document.querySelector('#search-submit')
 const searchBar = document.querySelector('#searchBar')
 const divForSavedCards = document.querySelector('.savedShell')
-const searchTerm = []
 
 
 function fetchDataAndSubmit() {
@@ -16,10 +15,12 @@ function fetchDataAndSubmit() {
             .then(res => res.json())
             .then(data => {
 
-                countries = data
+                const countries = data
+
 
                 const searchTerm = searchBar.value
                 const splitSearchTerm = searchTerm.split(" ");
+
 
                 for (let i = 0; i < splitSearchTerm.length; i++) {
                     splitSearchTerm[i] = splitSearchTerm[i][0].toUpperCase() + splitSearchTerm[i].substr(1).toLowerCase()
@@ -113,14 +114,8 @@ function cloneElement(originalCard) {
 
     let removeBtn = document.createElement('button')
     removeBtn.textContent = 'Remove'
-    removeBtn.onClick = function () {
-        removeCountry(cloneCard)
-    }
 
     cloneCard.append(removeBtn)
-
-
-
 
     removeBtn.addEventListener('click', () => {
         cloneCard.remove()
