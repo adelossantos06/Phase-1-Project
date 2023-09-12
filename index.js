@@ -15,6 +15,7 @@ function fetchDataAndSubmit() {
             .then(res => res.json())
             .then(data => {
 
+
                 const countries = data
 
 
@@ -105,14 +106,14 @@ function renderCountries(countries) {
 function cloneElement(originalCard) {
 
 
-    let cloneCard = originalCard.cloneNode(true)
-    let saveBtn = cloneCard.querySelector('.button')
+    const cloneCard = originalCard.cloneNode(true)
+    const saveBtn = cloneCard.querySelector('.button')
     saveBtn.remove();
 
     divForSavedCards.appendChild(cloneCard)
 
 
-    let removeBtn = document.createElement('button')
+    const removeBtn = document.createElement('button')
     removeBtn.textContent = 'Remove'
 
     cloneCard.append(removeBtn)
